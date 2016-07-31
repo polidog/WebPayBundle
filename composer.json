@@ -1,0 +1,24 @@
+{
+    "name": "polidog/web-pay-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "polidog",
+            "email": "polidogs@gmail.com"
+        }
+    ],
+    "require": {
+        "webpay/webpay": "^2.2",
+        "symfony/framework-bundle": "^3.1",
+        "symfony/dependency-injection": "^3.1",
+        "symfony/http-kernel": "^3.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Polidog\\WebPayBundle\\": "src"
+        }
+    }
+}
