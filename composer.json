@@ -8,6 +8,7 @@
         }
     ],
     "require": {
+        "php": ">= 5.4.0",
         "webpay/webpay": "~2.2",
         "symfony/framework-bundle": "~3.0|~2.3",
         "symfony/dependency-injection": "~3.0|~2.3",
