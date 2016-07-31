@@ -1,0 +1,23 @@
+services:
+    polidog_web_pay.web_pay:
+        class: WebPay\WebPay
+        arguments:
+            - "%polidog_web_pay.token%"
+        public: false
+
+    polidog_web_pay.proxy.property_method_proxy:
+        class: Polidog\WebPayBundle\Proxy\PropertyMethodProxy
+        arguments:
+            - "@polidog_web_pay.web_pay"
+            - "@event_dispatcher"
+        public: false
+
+    polidog_web_pay.web_pay_api:
+        class: Polidog\WebPayBundle\WebPayApi
+        arguments:
+            - "@polidog_web_pay.proxy.property_method_proxy"
+
+    polidog_web_pay.controller.webhook_controller:
+        class: Polidog\WebPayBundle\Controller\WebhookController
+        arguments:
+            - "@event_dispatcher"
