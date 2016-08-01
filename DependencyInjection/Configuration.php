@@ -22,12 +22,10 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('token')->isRequired()->end()
+                ->scalarNode('public_api_key')->isRequired()->end()
+                ->scalarNode('secret_api_key')->isRequired()->end()
             ->end()
         ;
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
 
         return $treeBuilder;
     }

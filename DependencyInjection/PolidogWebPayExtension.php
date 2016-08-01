@@ -21,7 +21,8 @@ class PolidogWebPayExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-        $container->setParameter('polidog_web_pay.token', $config['token']);
+        $container->setParameter('polidog_web_pay.public_api_key', $config['public_api_key']);
+        $container->setParameter('polidog_web_pay.secret_api_key', $config['secret_api_key']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

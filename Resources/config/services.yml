@@ -2,7 +2,7 @@ services:
     polidog_web_pay.web_pay:
         class: WebPay\WebPay
         arguments:
-            - "%polidog_web_pay.token%"
+            - "%polidog_web_pay.public_api_key%"
         public: false
 
     polidog_web_pay.proxy.property_method_proxy:
@@ -21,3 +21,4 @@ services:
         class: Polidog\WebPayBundle\Controller\WebhookController
         arguments:
             - "@event_dispatcher"
+            - "%%"

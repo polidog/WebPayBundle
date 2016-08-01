@@ -1,4 +1,5 @@
 <?php
+
 namespace Polidog\WebPayBundle;
 
 final class WebPayEvents

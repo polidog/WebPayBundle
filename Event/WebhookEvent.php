@@ -2,11 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: polidog
- * Date: 2016/08/01
+ * Date: 2016/08/01.
  */
 
 namespace Polidog\WebPayBundle\Event;
-
 
 use Symfony\Component\EventDispatcher\Event;
 use WebPay\Data\EventData;
@@ -25,7 +24,8 @@ class WebhookEvent extends Event
 
     /**
      * WebhookEvent constructor.
-     * @param string $type
+     *
+     * @param string    $type
      * @param EventData $data
      */
     public function __construct($type, EventData $data)
