@@ -9,14 +9,12 @@ services:
         class: Polidog\WebPayBundle\Proxy\WebPayProxy
         arguments:
             - "@polidog_web_pay.web_pay"
-        public: false
 
     polidog_web_pay.proxy.property_method_proxy:
         class: Polidog\WebPayBundle\Proxy\PropertyMethodProxy
         arguments:
             - "@polidog_web_pay.web_pay_proxy"
             - "@event_dispatcher"
-        public: false
 
     polidog_web_pay.web_pay_api:
         class: Polidog\WebPayBundle\WebPayApi
