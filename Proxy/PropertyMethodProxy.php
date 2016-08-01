@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: polidog
- * Date: 2016/07/31.
- */
-
 namespace Polidog\WebPayBundle\Proxy;
 
 use Polidog\WebPayBundle\Event\ResponseEvent;
@@ -17,9 +11,9 @@ use WebPay\WebPay;
 class PropertyMethodProxy
 {
     /**
-     * @var WebPay
+     * @var WebPayProxy
      */
-    private $webPay;
+    private $webPayProxy;
 
     /**
      * @var EventDispatcherInterface
@@ -27,22 +21,14 @@ class PropertyMethodProxy
     private $eventDispatcher;
 
     /**
-     * MethodWapper constructor.
-     *
-     * @param WebPay $webPay
+     * PropertyMethodProxy constructor.
+     * @param WebPayProxy $webPayProxy
+     * @param EventDispatcherInterface $eventDispatcher
      */
-    public function __construct(WebPay $webPay, EventDispatcherInterface $eventDispatcher)
+    public function __construct(WebPayProxy $webPayProxy, EventDispatcherInterface $eventDispatcher)
     {
-        $this->webPay = $webPay;
+        $this->webPayProxy = $webPayProxy;
         $this->eventDispatcher = $eventDispatcher;
-    }
-
-    /**
-     * @return WebPay
-     */
-    public function getWebPay()
-    {
-        return $this->webPay;
     }
 
     /**
@@ -50,12 +36,12 @@ class PropertyMethodProxy
      * @param $name
      * @param array $args
      *
-     * @return mixed
+     * @return AbstractData
      */
     public function call($property, $name, array $args)
     {
         $this->fireRequestEvent($property, $name, $args);
-        $response = $this->webPay->{$property}->{$name}($args);
+        $response = $this->webPayProxy->propertyMethodCall($property, $name, $args);
         $this->fireResponseEvent($property, $name, $response);
 
         return $response;

@@ -5,10 +5,16 @@ services:
             - "%polidog_web_pay.public_api_key%"
         public: false
 
+    polidog_web_pay.web_pay_proxy:
+        class: Polidog\WebPayBundle\Proxy\WebPayProxy
+        arguments:
+            - "%polidog_web_pay.web_pay%"
+        public: false
+
     polidog_web_pay.proxy.property_method_proxy:
         class: Polidog\WebPayBundle\Proxy\PropertyMethodProxy
         arguments:
-            - "@polidog_web_pay.web_pay"
+            - "@polidog_web_pay.web_pay_proxy"
             - "@event_dispatcher"
         public: false
 
@@ -21,4 +27,4 @@ services:
         class: Polidog\WebPayBundle\Controller\WebhookController
         arguments:
             - "@event_dispatcher"
-            - "%%"
+            - "%polidog_web_pay.secret_api_key%"
