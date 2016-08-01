@@ -2,7 +2,7 @@ services:
     polidog_web_pay.web_pay:
         class: WebPay\WebPay
         arguments:
-            - "%polidog_web_pay.public_api_key%"
+            - "%polidog_web_pay.secret_api_key%"
         public: false
 
     polidog_web_pay.web_pay_proxy:
