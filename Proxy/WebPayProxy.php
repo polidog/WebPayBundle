@@ -29,7 +29,8 @@ class WebPayProxy
      */
     public function propertyMethodCall($property, $name, array $args)
     {
-        return $this->webPay->{$property}->{$name}($args);
+        $targetObject = $this->webPay->{$property};
+        return call_user_func_array([$targetObject,$name], $args);
     }
 
 }
